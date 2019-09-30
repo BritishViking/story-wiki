@@ -19,6 +19,7 @@ public class CommandRunner {
       ! if the script consist only of 2 words, the entity becomes null and the second word becomes the identifier
 
       ! if the script consist only of 1  word, the entire script is the main command (minus any spaces aka " ")
+      
     */
 
     public static String[] scriptInterpereter(String script) throws IllegalArgumentException {
