@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateArticleController">
+<AnchorPane styleClass="anchorpane" stylesheets="masterStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateArticleController">
     <children>
         <TextField fx:id="titleField" layoutX="184.0" layoutY="167.0" promptText="Title..." />
         <TextField fx:id="categoryField" layoutX="184.0" layoutY="260.0" promptText="Category..." />
