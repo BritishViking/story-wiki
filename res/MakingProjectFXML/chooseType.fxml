@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChooseTypeController">
+   <children>
+      <Button layoutX="57.0" layoutY="123.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="120.0" text="Book" />
+      <Button layoutX="431.0" layoutY="123.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="120.0" text="TV - Series" />
+      <Button layoutX="117.0" layoutY="241.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="120.0" text="Comic" />
+      <Button layoutX="240.0" layoutY="123.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="120.0" text="Movie" />
+      <Button layoutX="371.0" layoutY="241.0" mnemonicParsing="false" onAction="#createGame" prefHeight="64.0" prefWidth="120.0" text="Game" />
+      <Button layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToHome" text="Go Back" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="articleEditPageController">
+   <children>
+      <Label fx:id="articleTitle" alignment="CENTER" layoutX="194.0" layoutY="37.0" prefHeight="81.0" prefWidth="620.0" text="Title">
+         <font>
+            <Font size="55.0" />
+         </font></Label>
+      <Label fx:id="kategory" alignment="CENTER" layoutX="928.0" layoutY="101.0" prefHeight="21.0" prefWidth="397.0" text="Label" />
+      <Button fx:id="save" layoutX="1025.0" layoutY="21.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="120.0" text="Save" />
+      <VBox fx:id="bodyContainer" layoutX="151.0" layoutY="113.0" prefHeight="832.0" prefWidth="705.0" />
+      <Button fx:id="addNewBody" layoutX="43.0" layoutY="170.0" mnemonicParsing="false" onAction="#addNewBody" text="Add New" />
+      <Button fx:id="deleteButton" layoutX="1154.0" layoutY="21.0" mnemonicParsing="false" onAction="#delete" text="Delete Article" />
+      <VBox fx:id="tabKat" layoutX="911.0" layoutY="132.0" prefHeight="692.0" prefWidth="428.0" />
+   </children>
+</AnchorPane>

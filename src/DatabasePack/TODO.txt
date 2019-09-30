@@ -1,0 +1,124 @@
+We need a few classes to talk with the database
+
+1. Code Values DONE
+2. Code ForeignKey DONE
+3. Code TableHead DONE
+4. Code Table DONE
+5. Code DatabaseConnector
+
+/* After this is coded we'll have enough to code several specialized "interfaces" agianst the any database that we create ;)
+
+1. DatabaseConnector, the coders interface against the database
+    - String url {read only} // Contains the url of the database
+    - String databaseDriver {read only} // Contains the database driver
+    - ResultSet res // Contains the resultset of the last excecuted sql statment, can be null
+    - Statment stat // contains the current Statment object
+    - Connection con // contains the current Connection Object
+    - Table resTab; //saves the result of the latest query, is null if the query did not produce any result;
+
+    -----------------------------------------------------------
+    +DatabaseConnector(String server, String database, String username, String password)
+
+    +Table getResult() // returns resTab;
+    +boolean exec(String sql)
+    -Table tabCreator() //creates a Table object based on the current ResultSet
+    -boolean connect() // initializes stat and con, is false if either throws an exception while being initialized
+    -void close()  //closes res, stat and con
+    -void conClose() //closes stat and con
+
+   ! maybe include the databaseDriver in the constructer head as an argument, because if i am to use this class with other project
+   the object can't be initialized if it can not find the driver
+        !! maybe create a jar file or a pakage that includes this class and the database jar file to avoid this problem?
+
+ 2. Database, the users interface against the database
+/* DO NOT CODE THIS CLASS YET, IT MAY BE ENOUGH WITH THE DATABASECONNECTOR + 2.1, 2.2, AND 2.3
+    -DatabaseConnector bridge;
+    + String ALL = "*" {read only}
+    ---------------------------------------------------------------------------------
+    +Database(String server, String database, String username, String password);
+
+    +boolean insert(String tableName, String[][] values)
+    +boolean createTable(tableName, String[][] columns)
+    +Table select(String[] collumns, String Tables, String condition
+
+ 2.1 TableHead, object used by the databaseObject as a DONE
+         -ForeignKey[] fks;
+         -String name
+         -String[][] columns;
+
+
+         -----------------------------
+         TableHead(String pkName, int pkValue) // add columns and fk through methods
+
+
+         +String getName();
+         +ForeignKeys[] getForeignKeys();
+         +String getPkName();
+         +String getPkValue();
+         +int getColumnCount();
+         +String getColumnValue(String label); // returns null if the column is not in the table
+         +String getColumnValue(int columnIndex); //return null if the index is invalid;
+         +boolean addColumn(String name, int value, boolean notNUll);
+         -void addColumnSpace();
+         +boolean addForeignKeyConstraint(ForeignKey fk);
+         -void addFksSpace();
+         +boolean columnExist(String label);
+         +boolean columnExist(String label, String value);
+
+
+
+2.2  ForeignKey, object that represent a (not-validated) foreignKey, makes sure the format is right; - DONE
+
+        -String refrenceTable {read only} //table it references too
+        -String refrenceLabel {read only}
+        -String label {read only}  //table it is a foreign key in
+        -boolean notNull; {read only}
+        -String value; {read only}
+        +int INT; {read only}
+        +int VARCHAR30; {read only}
+        +int BOOLEAN; {read only}
+
+        +ForeignKey(String label, String value, String refrenceTable, String refrenceLabel, boolean isNull);
+
+        +String getLabel();
+        +String getRefrenceLabel();
+        +String getRefrenceTable();
+        +String getValue();
+        +int getValueNUmber();
+        +boolean isNotNulll();
+        +String toString();
+
+
+ 2.3 Table, looks a lot like ResultSet // should Table extend Tablehead or have an object of it as an object variable
+
+     -String[][] values //value[][0] = pk,
+     -isNotNull
+     -TableHead tb; //meta about the table
+
+     ------------------------------------
+     +Table(TableHead tb)
+
+     +boolean addRow(String[] values);
+     +boolean deleteRow(String pkValue);
+     +String[][] getValues()
+     +TableHead getTableHead()
+
+
+/*
+2.4 VAULES - DONE
+    +static int INT {readOnly}
+    +static int VARCHAR30 {readOnly}
+        ----------------------------------------------------------------------------
+    +static int BOOLEAN {readOnly}
+    +static String NOTNULL {readOnly}
+    +static String NULL {readOnly}
+
+    -static String[] values {readOnly}
+
+    ------------------------------------------
+    +static String getValueName(int valNumber)
+    +static int getValueNumber(String value)
+    +static String getNullable(boolean notNull) // returns the Values.NOTNULL or Values.NULL, depending on the value of notNUll
+*/
+
+

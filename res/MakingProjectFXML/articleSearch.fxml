@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArticleSearchController">
+   <children>
+      <Button fx:id="backButton" layoutX="906.0" layoutY="27.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <TextField fx:id="searchField" layoutX="160.0" layoutY="107.0" prefHeight="31.0" prefWidth="588.0" promptText="search article name..." />
+      <Button fx:id="searchButton" layoutX="758.0" layoutY="107.0" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="82.0" text="Search" />
+      <VBox fx:id="vBox" layoutX="160.0" layoutY="149.0" prefHeight="791.0" prefWidth="588.0" />
+      <Button layoutX="758.0" layoutY="161.0" mnemonicParsing="false" onAction="#getAll" prefHeight="31.0" prefWidth="82.0" text="See all" />
+   </children>
+</AnchorPane>

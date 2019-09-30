@@ -1,0 +1,36 @@
+A collections of charachters is enclosed in a tag by the use oftags
+
+
+
+ Like this:
+ <tagname attribute="attributeContent"> plaintext </>;
+
+Example:
+    <hp src="Septer Mordax"> Septer </>
+
+
+
+API
+
+hp
+    Purpose:
+        To link the word up against another article
+
+    Attributes:
+        {src} - Not optional
+            The article name that is to be linked to the tag
+
+
+nl
+    Purpose:
+        To add a new line
+
+    Attributes:
+        None
+
+bold
+    Purpose:
+        To make text bold
+
+    Attributes:
+        none
