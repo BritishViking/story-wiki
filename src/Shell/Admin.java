@@ -29,6 +29,7 @@ public class Admin {
 
     public static boolean createNewCharacter(Table tab) {
         return false;
+        
     }
 
     public static Table execSQL(String sqlstring) throws SQLSyntaxErrorException {
