@@ -9,6 +9,7 @@ public class Shell extends MainFrame {
         super(window);
     }
 
+    
     public static void main(String[]args)throws Exception{
 
         SwingUtilities.invokeAndWait(new Runnable() {
