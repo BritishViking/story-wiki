@@ -16,6 +16,7 @@ public class Command implements Serializable {
         command = cmd;
         this.name = name;
         this.description = description;
+        
     }
 
 
