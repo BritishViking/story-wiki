@@ -2,8 +2,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ *
+ * Will be updated to a connection pool when i got the time
+ */
+
 public class DBConnect {
-    private static String url = "jdbc:mysql://localhost:3306/mariaTest?user=root&password=Kvj900I23dDf&useSSL=FALSE&allowPublicKeyRetrieval=true";
     private static  String databasedrviver = "com.mysql.cj.jdbc.Driver";
 
 
@@ -11,7 +15,7 @@ public class DBConnect {
         Connection con = null;
         try{
             Class.forName(databasedrviver);
-            con = DriverManager.getConnection(url);
+            con = DriverManager.getConnection(PropertiesCache.getInstance().getProperty("url"));
         }catch (ClassNotFoundException e){
             e.printStackTrace();
 
