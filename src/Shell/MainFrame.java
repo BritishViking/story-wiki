@@ -13,7 +13,7 @@ public abstract class MainFrame extends JFrame {
         //Set Layout manager
         setLayout(new BorderLayout());
 
-        //Create Swing component
+        //Create Swing component j
          JTextArea textArea = new JTextArea();
 
         getContentPane().setBackground(Color.YELLOW);  //Whatever color
