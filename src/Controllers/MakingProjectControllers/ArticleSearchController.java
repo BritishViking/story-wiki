@@ -1,12 +1,8 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class ArticleSearchController extends Controller  {
@@ -27,7 +23,7 @@ public class ArticleSearchController extends Controller  {
     }
 
     private void searchAndSet(String s){
-        dbo db = new dbo();
+        DBO db = new DBO();
 
         String[] sT = db.searchByName(s, getProject());
         if(sT.length == 0){

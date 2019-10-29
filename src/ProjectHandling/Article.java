@@ -6,6 +6,7 @@ public class Article {
     private CategoryEntry entries;
     private boolean editBody = false;
 
+
     public Article(String head, ArticleEntry[] body, int articleNUmber, CategoryEntry catEntries){
         this.head = head;
         this.body = body;

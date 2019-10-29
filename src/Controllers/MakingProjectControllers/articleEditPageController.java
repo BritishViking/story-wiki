@@ -23,7 +23,7 @@ public class articleEditPageController extends Controller {
     Article art;
 
     public void setArticle(String artName){
-        dbo db = new dbo();
+        DBO db = new DBO();
         Article art = db.getArticle(artName, getProject());
         if(art != null) {
             setArticle(art);
@@ -52,7 +52,7 @@ public class articleEditPageController extends Controller {
     }
 
     public void delete(ActionEvent event){
-        dbo db = new dbo();
+        DBO db = new DBO();
 
         db.deleteArticle(art.getArticleNUmber());
         directTo("firstScreen.fxml", getEventStage(event));
@@ -129,7 +129,7 @@ public class articleEditPageController extends Controller {
             }
         }
 
-        dbo db = new dbo();
+        DBO db = new DBO();
         System.out.println("\n------------------------------------------------\n"+art);
        db.saveArticle(art);
 

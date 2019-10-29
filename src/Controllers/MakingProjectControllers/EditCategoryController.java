@@ -22,7 +22,7 @@ public class EditCategoryController extends Controller {
     @Override
     public void setProject(Project p) {
         super.setProject(p);
-        dbo db = new dbo();
+        DBO db = new DBO();
 
 
     }
@@ -83,7 +83,7 @@ public class EditCategoryController extends Controller {
 
         // TODO Update category
 
-        dbo db = new dbo();
+        DBO db = new DBO();
 
         db.updateCategory(meta);
         System.out.println("\n\n");

@@ -7,16 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.VBox;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class FindCategoryController extends Controller{
     @FXML Button backButton;
 
@@ -35,7 +25,7 @@ public class FindCategoryController extends Controller{
     }
 
     private void searchAndSet(String s){
-        dbo db = new dbo();
+        DBO db = new DBO();
 
         CategoryMeta[] sT = db.findCategories(s, getProject());
         if(sT.length == 0){

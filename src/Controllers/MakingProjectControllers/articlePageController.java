@@ -24,7 +24,7 @@ public class articlePageController extends Controller implements Initializable {
     Article article;
 
     public void setArticle(String artName){
-        dbo db = new dbo();
+        DBO db = new DBO();
         setArticle( db.getArticle(artName, getProject()));
     }
 

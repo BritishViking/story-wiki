@@ -1,4 +1,3 @@
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -8,9 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 
 public class CreateArticleController extends Controller {
@@ -46,7 +43,7 @@ public class CreateArticleController extends Controller {
 
 
         if(!categoryField.getText().equals("")){
-            dbo db = new dbo();
+            DBO db = new DBO();
 
             CategoryMeta[] suggiestions = db.findCategories(categoryField.getText(), getProject());
 
@@ -103,7 +100,7 @@ public class CreateArticleController extends Controller {
     }
 
     public void create(ActionEvent event){
-        dbo db = new dbo();
+        DBO db = new DBO();
 
         String title = titleField.getText();
         String category = null;

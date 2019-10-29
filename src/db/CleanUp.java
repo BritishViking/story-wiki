@@ -44,13 +44,13 @@ public class CleanUp {
 
     public static void handleException(Exception e){
         if (e instanceof  SQLException){
-            System.out.println("sql");
+            System.out.println("SQL Exception");
+
             e.printStackTrace();
         }else if( e instanceof java.lang.RuntimeException){
-            System.out.println("runtime");
+            System.out.println("runtime exception");
             throw (java.lang.RuntimeException) e;
         }else{
-            System.out.println("neither");
             e.printStackTrace();
         }
     }

@@ -2,7 +2,7 @@
 
 import java.sql.*;
 
-public class dbo {
+public class DBO {
 
 
     public Article getArticle(String articleName, Project project){
@@ -695,29 +695,122 @@ public class dbo {
         return null;
     }
 
+    public boolean addNewTag(String tag, int artId){
+        Connection con = DBConnect.getConnection();
+        PreparedStatement stmt = null;
+
+        String sql = "INSERT INTO tag (artid, tag) VALUES (?, ?)";
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, artId);
+            stmt.setString(2, tag);
+            stmt.executeUpdate();
+        }catch (SQLException f) {
+            f.printStackTrace();
+            return false;
+        }finally {
+
+            CleanUp.closePre(stmt);
+            CleanUp.closeCon(con);
+        }
+        return true;
+    }
+
+    public boolean editTag(String oldtag, String newTag, int artId){
+        Connection con = DBConnect.getConnection();
+        PreparedStatement stmt = null;
+
+        String sql = "UPDATE tag SET tag = ? WHERE tag = ? && artid = ?";
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, newTag);
+            stmt.setString(2, oldtag);
+            stmt.setInt(3, artId);
+            stmt.executeUpdate();
+        }catch (SQLException f) {
+            f.printStackTrace();
+            return false;
+        }finally {
+
+            CleanUp.closePre(stmt);
+            CleanUp.closeCon(con);
+        }
+        return true;
+    }
+
+    public boolean deleteTag( String tag, int artId){
+        Connection con = DBConnect.getConnection();
+        PreparedStatement stmt = null;
+
+        String sql = "DELETE FROM tag WHERE tag = ? && artid = ?";
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, tag);
+            stmt.setInt(2, artId);
+            stmt.executeUpdate();
+        }catch (SQLException f) {
+            f.printStackTrace();
+            return false;
+        }finally {
+
+            CleanUp.closePre(stmt);
+            CleanUp.closeCon(con);
+        }
+        return true;
+    }
+
+
+    public String[] searchByTag(String tag, Project project){
+        Connection con = DBConnect.getConnection();
+
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+
+        String sql = "SELECT arthode.navn FROM artHode JOIN tag ON tag.artid = artHode.artid JOIN project ON project.proid = artHode.proid WHERE tag = ?  && project.proid = ?";
+
+
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, tag);
+            stmt.setInt(2, project.getId());
+
+            res = stmt.executeQuery();
+
+            res.last();
+            int size = res.getRow();
+            res.beforeFirst();
+
+            String[] result = new String[size];
+
+            for(int i =0; i<result.length; i++){
+                res.next();
+                result[i] = res.getString("navn");
+            }
+            return result;
+        }catch (Exception e){
+            CleanUp.handleException(e);
+            return null;
+        }finally {
+            CleanUp.closeRes(res);
+            CleanUp.closePre(stmt);
+            CleanUp.closeCon(con);
+        }
+    }
+
     public static void main (String[]args){
-
-        dbo db  = new dbo();
+        DBO db = new DBO();
+        //db.addNewTag("Cool", 1);
+        //db.editTag("Cool", "Coolio", 1);
         Project pro = new Project("Test", 1);
-        db.findCategory("Person", pro);
-       /* ArticleEntry n = new ArticleEntry("Hei", "Dette er en test", 0);
-        ArticleEntry e = new ArticleEntry("kl", "Dette er enda en test", 3);
-        ArticleEntry r = new ArticleEntry("Lo", "Dette er en test igjen 3", 2);
-        n.setWritten(true);
-        n.setBody("dd");
-        e.setBody("oo");
-        r.setBody("fh");
+        String[] s = db.searchByTag("evil", pro);
 
-        ArticleEntry[] v = {r,e};
-
-        String[] att = {"Name", "Age", "Familiy"};
-        CategoryMeta cat = new CategoryMeta("Person", att, 1);
-        CategoryEntry ent = new CategoryEntry(cat);*/
-
-
-
-
-
+        for(int i = 0; i<s.length; i++){
+            System.out.println(s[i]);
+        }
 
     }
 }

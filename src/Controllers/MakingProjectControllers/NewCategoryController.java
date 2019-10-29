@@ -55,7 +55,7 @@ public class NewCategoryController extends Controller {
 
         // TODO WRITE IF ok
 
-        dbo db = new dbo();
+        DBO db = new DBO();
 
         System.out.println(db.createNewCategory(titleFIeld.getText(), attr, getProject()));
 
